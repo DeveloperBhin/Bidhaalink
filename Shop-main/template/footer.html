@@ -1,0 +1,46 @@
+{%load static %}
+<footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <p>Related links</p>
+          <a href="https://maps.app.goo.gl/zSqETo1k79DFD5Up8">Uhuru, Dar es Salaam, Tanzania</a>
+          <p><a href="https://maps.app.goo.gl/ZnHNa9F8kcqhinY36">Mbezi Beach Rafia, Kituo Kipya, Dar es Salaam</a></p>
+        </div>
+        <div class="col-md-6 text-center">
+          <p>Social media</p>
+    
+    <a href="https://www.instagram.com/bidhaalink_/?utm_source=ig_web_button_share_sheet">    <img src="{{ image6.Image.url }}" style="width: 40px; height: 40px;" alt="Logo"/> BidhaaLink
+    </a><br>
+    <a href="https://x.com/BidhaaLinkTz"><img src="{{ image7.Image.url }}" style="width: 40px; height: 40px;" alt="Logo"/> BidhaaLink
+    </a><br>
+    <a><img src="{{ image8.Image.url }}" style="width: 40px; height: 40px;" alt="Logo"/> 0759233403</a>
+                
+
+                 
+      </div>
+      <p>&copy; 2024 BidhaaLink. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and Custom Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle push menu
+    const toggleButton = document.querySelector('.menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+
+    toggleButton.addEventListener('click', function() {
+      sidebar.classList.toggle('active'); // Show/hide sidebar
+      mainContent.classList.toggle('shifted'); // Shift content
+    });
+
+    // Toggle the sliding dropdown
+    const postButton = document.getElementById('postButton');
+    const postDropdown = document.getElementById('postDropdown');
+
+    postButton.addEventListener('click', function() {
+      postDropdown.classList.toggle('show'); // Toggle slide effect by adding/removing class
+    });
+  </script>

@@ -1,0 +1,23 @@
+<header class="header">
+    <div class="container-fluid">
+      <div class="row align-items-center py-2" style="background-color:#155B7A;">
+        <div class="col-md-6 col-sm-8 d-flex align-items-center">
+          <h4 class="ms-3 text-truncate" style="color: var(--primary-color); font-size: 1.5rem;">
+            <img src="{{ image2.Image.url }}" style="width: 40px; height: 40px;" alt="Logo"/> BidhaaLink
+          </h4>
+        </div>
+        <div class="col-md-6 col-sm-4">
+          <nav>
+            <ul class="nav justify-content-end flex-wrap">
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'index' %}">Home</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'networkform' %}">Need to pay?</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'aboutus' %}">About Us</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'contactus' %}">Contact Us</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'loginpage' %}">Login</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'logout' %}">Logout</a></button></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>

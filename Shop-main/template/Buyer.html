@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Push Menu with Slide Dropdown</title>
+
+  <style>
+    :root {
+      --primary-bg: #D9D9D9;
+      --secondary-bg: #CDC2A5;
+      --primary-color: darkorange;
+      --hover-bg: #310202;
+      --sidebar-bg: #155B7A;
+      --footer-bg: #ffffff;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: var(--primary-bg);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: var(--primary-bg);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 5px 0;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f3f3f3;
+    }
+
+    .nav-item button {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .nav-item button:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .push-menu {
+      position: fixed;
+      top: 60px;
+      left: -250px;
+      width: 250px;
+      height: calc(100vh - 60px);
+      background-color: var(--sidebar-bg);
+      color: white;
+      transition: left 0.3s ease;
+      z-index: 1050;
+    }
+
+    .push-menu.active {
+      left: 0;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+      background-color: var(--sidebar-bg);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-left: 15px;
+      font-size: 18px;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      transition: margin-left 0.3s ease;
+    }
+
+    .main-content.shifted {
+      margin-left: 250px;
+    }
+
+    .footer {
+      background-color: var(--footer-bg);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .card img {
+      height: 400px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .category-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+
+    .category-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .carousel-inner img {
+      height: 40vh; /* Adjust this value as needed */
+      width: 40%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  
+      a.no-underline {
+          text-decoration: none; /* Removes the underline */
+      }
+      .quantity-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    
+      .quantity-container button {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+    
+      .quantity-container button:hover {
+        background-color: #e0e0e0;
+      }
+    
+      .quantity-container input[type="number"] {
+        width: 50px;
+        text-align: center;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+    
+
+
+
+  </style>
+</head>
+<body>
+  {%include "headerplain.html"%}
+  
+        <!-- Right-Aligned Images -->
+       
+       
+       
+
+  
+    <div class="col">
+    <div class="row">
+      
+     
+     
+      
+
+        <div class="container d-flex justify-content-center align-items-center ">
+            <form class="p-4 rounded" style="color:black; font-size: 20px; width: 100%; max-width: 600px;" method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+               
+        
+                <div class="d-flex flex-column align-items-center" 
+                     style="background-color: #ffffff; padding: 10px; border: 1px solid #ccc; border-radius: 10px; border:1px solid black;">
+                   
+                    <button class="menu-toggle text-center " style="font-size:12px;"> your pproduct details << </button> 
+                    <div class="push-menu" id="sidebar">
+                      <div class="py-4">
+                        
+                        <div class="mb-4">
+                          <div class="d-flex flex-column align-items-center" 
+                          style=" padding: 10px;  border-radius: 10px; font-size:14px;">
+                       <!-- Form fields -->
+          <img src="{{ sel1.Image }}" style="width: 30%; height: auto; object-fit: cover; border-radius: 5px;">
+          <div class="row">
+            
+              <p  style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                <strong>Name:</strong> {{ sel1.Name }}</p>
+              <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                <strong>Brand:</strong> {{ sel1.Brand }}</p>
+              <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                <strong>Status:</strong> {{ sel1.Status }}</p>
+            
+            
+              <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                <strong>Quantity:</strong> {{ sel1.Price }}</p>
+              <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                <strong>Quantity:</strong> {{ sel1.quantity }}</p>
+                    
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    
+                    <p class="text-center me-auto">DELIVERY</p>
+                    <div class="row">
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                            Region:<br> {{ form.Region }}
+                        </p>
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                            District:<br> {{ form.District }}
+                        </p>
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                            Ward:<br> {{ form.Ward }}
+                        </p>
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                            Phone:<br> {{ form.Phone }}
+                        </p>
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                            Contact Name:<br> {{ form.Contact_name }}
+                        </p>
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                          First name:<br> {{ form.First_name }}
+                      </p>
+                      <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                       Last name :<br> {{ form.last_name }}
+                    </p>
+                      
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                            House no:<br> {{ form.House_no }}
+                        </p>
+                        <p style="margin-top: 10px; padding: 10px; border-radius: 5px; width: 100%;">
+                          Email:<br> {{ form.Email }}
+                      </p>
+                      <input type="hidden" name="cart_item_id" value="{{ cart_item.id }}">  <!-- CartItems ID -->
+    
+                    </div>
+                    <div class="db mt-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                </div>
+            </form>
+        </div>
+        
+</div>
+</div>
+
+
+
+ 
+   
+
+{%include "footer.html"%} 
+
+  <!-- Bootstrap JS and Custom Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle push menu
+    const toggleButton = document.querySelector('.menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+
+    toggleButton.addEventListener('click', function() {
+      sidebar.classList.toggle('active'); // Show/hide sidebar
+      mainContent.classList.toggle('shifted'); // Shift content
+    });
+
+    // Toggle the sliding dropdown
+    const postButton = document.getElementById('postButton');
+    const postDropdown = document.getElementById('postDropdown');
+
+    postButton.addEventListener('click', function() {
+      postDropdown.classList.toggle('show'); // Toggle slide effect by adding/removing class
+    });
+  </script>
+</body>
+</html>

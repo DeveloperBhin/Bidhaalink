@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOME | Tunatrade</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    /* Root variables for consistent styling */
+    :root {
+      --primary-bg: #D9D9D9;
+      --secondary-bg: #CDC2A5;
+      --primary-color: darkorange;
+      --hover-bg: #310202;
+      --sidebar-bg: #155B7A;
+      --footer-bg: #ffffff;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: var(--primary-bg);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: var(--primary-bg);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 5px 0;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f3f3f3;
+    }
+
+    .nav-item button {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .nav-item button:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .push-menu {
+      position: fixed;
+      top: 60px;
+      left: -250px;
+      width: 250px;
+      height: calc(100vh - 60px);
+      background-color: var(--sidebar-bg);
+      color: white;
+      transition: left 0.3s ease;
+      z-index: 1050;
+    }
+
+    .push-menu.active {
+      left: 0;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+      background-color: var(--sidebar-bg);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-left: 15px;
+      font-size: 18px;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      transition: margin-left 0.3s ease;
+    }
+
+    .main-content.shifted {
+      margin-left: 250px;
+    }
+
+    .footer {
+      background-color: var(--footer-bg);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .card img {
+      height: 400px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .category-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+
+    .category-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .carousel-inner img {
+      height: 40vh; /* Adjust this value as needed */
+      width: 40%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  
+      a.no-underline {
+          text-decoration: none; /* Removes the underline */
+      }
+      .quantity-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    
+      .quantity-container button {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+    
+      .quantity-container button:hover {
+        background-color: #e0e0e0;
+      }
+    
+      .quantity-container input[type="number"] {
+        width: 50px;
+        text-align: center;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+    
+
+
+  </style>
+  <header class="header">
+    <div class="container-fluid">
+      <div class="row align-items-center py-2" style="background-color:#155B7A;">
+        <div class="col-md-6 col-sm-8 d-flex align-items-center">
+          <h4 class="ms-3 text-truncate" style="color: var(--primary-color); font-size: 1.5rem;">
+            <img src="{{ image2.Image.url }}" style="width: 40px; height: 40px;" alt="Logo"/> BidhaaLink
+          </h4>
+        </div>
+        <div class="col-md-6 col-sm-4">
+          <nav>
+            <ul class="nav justify-content-end flex-wrap">
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'index' %}">Home</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'networkform' %}">Need to pay?</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'aboutus' %}">About Us</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'contactus' %}">Contact Us</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'loginpage' %}">Login</a></button></li>
+              <li class="nav-item"><button><a class="nav-link" href="{% url 'logout' %}">Logout</a></button></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+ 
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <!-- Menu Toggle -->
+      <button class="menu-toggle btn" style="font-size: 15px;">☰</button>
+      
+      <!-- Navigation Links --></div>
+      <div class="container-fluid">
+      <ul class="navbar-nav d-flex align-items-center">
+        <li class="nav-item">
+          <form action="{% url 'fashionbrand' %}" method="POST" class="d-flex ms-auto">
+            {% csrf_token %}
+            <input type="text" name="searched" class="form-control me-2" placeholder="Search for products">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+          <button class="btn border-0" >
+            <a class="nav-link text-decoration-none" href="{% url 'buyersite' %}" style="color:blue">Buyer Site</a>
+          </button>
+        </li>
+        <li class="nav-item ">
+          <button class="btn border-0" >
+            <a class="nav-link text-decoration-none " href="{% url 'sellersite' %}"style="color:blue">Seller Site</a>
+          </button>
+        </li>
+      </ul>
+
+      <!-- Search Box -->
+    
+
+      <!-- Right-Aligned Images -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="{% url 'Cartdetailed' %}">
+            <img src="{{ image1.Image.url }}" class="img-fluid" style="width: 30px;" alt="Cart">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'loginpage' %}">
+            <img src="{{ image0.Image.url }}" class="img-fluid" style="width: 30px;" alt="Login">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
